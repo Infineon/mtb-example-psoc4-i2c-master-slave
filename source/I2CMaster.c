@@ -1,5 +1,5 @@
 /******************************************************************************
-* File Name:  I2CSlave.c
+* File Name:  I2CMaster.c
 *
 * Description:  This file contains all the functions and variables required for
 *               proper operation of I2C master peripheral
@@ -162,7 +162,7 @@ uint8_t WritePacketToEzI2C(uint8_t* writebuffer, uint32_t bufferSize)
         {
             /* Timeout recovery */
             Cy_SCB_I2C_Disable(CYBSP_I2C_HW, &CYBSP_I2C_context);
-            Cy_SCB_I2C_Enable (CYBSP_I2C_HW);
+            Cy_SCB_I2C_Enable(CYBSP_I2C_HW, &CYBSP_I2C_context);
         }
         else
         {
@@ -221,7 +221,7 @@ uint8_t ReadStatusPacketFromEzI2C(void)
         {
             /* Timeout recovery */
             Cy_SCB_I2C_Disable(CYBSP_I2C_HW, &CYBSP_I2C_context);
-            Cy_SCB_I2C_Enable (CYBSP_I2C_HW);
+            Cy_SCB_I2C_Enable(CYBSP_I2C_HW, &CYBSP_I2C_context);
         }
         else
         {
@@ -277,7 +277,7 @@ uint32_t initMaster(void)
         return I2C_FAILURE;
     }
     NVIC_EnableIRQ((IRQn_Type) CYBSP_I2C_SCB_IRQ_cfg.intrSrc);
-    Cy_SCB_I2C_Enable(CYBSP_I2C_HW);
+    Cy_SCB_I2C_Enable(CYBSP_I2C_HW, &CYBSP_I2C_context);
     return I2C_SUCCESS;
 }
 

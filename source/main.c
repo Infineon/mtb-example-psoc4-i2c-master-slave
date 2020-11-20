@@ -1,7 +1,8 @@
 /******************************************************************************
 * File Name:  main.c
 *
-* Description:  This is the source code for the PSoC 4 MCU I2C Master example
+* Description:  This is the source code for the PSoC 4 MCU I2C Master EzI2C 
+                Slave example
 *
 * Related Document: See Readme.md
 *
